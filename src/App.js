@@ -17,7 +17,6 @@ function App() {
           </Navbar.Brand>
         </Container>
       </Navbar>
-      <Worldcup></Worldcup>
     </div>
   );
 }
