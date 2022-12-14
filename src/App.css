@@ -9,6 +9,20 @@
 .navbar-left {
   padding-right: 1000px;
 }
+.flags {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.flag {
+  object-fit: fill;
+  width: 300px;
+  height: 190px;
+  margin: 10px;
+  max-height: 250px;
+  border: 1px solid black;
+}
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {

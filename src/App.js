@@ -1,8 +1,7 @@
-import logo from './logo.svg';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {Navbar, Container} from 'react-bootstrap';
-import {Worldcup} from './components/worldcup.js'
+import {Worldcup} from './components/worldcup.js';
 
 function App() {
   return (
@@ -17,6 +16,7 @@ function App() {
           </Navbar.Brand>
         </Container>
       </Navbar>
+      <Worldcup></Worldcup>
     </div>
   );
 }
