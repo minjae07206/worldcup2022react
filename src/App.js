@@ -2,21 +2,35 @@ import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {Navbar, Container} from 'react-bootstrap';
 import {Worldcup} from './components/worldcup.js';
+import {Game} from './components/game.js';
+import { Routes, Route, Link } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import {realGroup} from './store.js';
 
 function App() {
+  let dispatch = useDispatch();
+  let state = useSelector((state)=>state);
   return (
     <div className="App">
       <Navbar bg="dark" variant="dark">
         <Container>
-          <Navbar.Brand>
+          <Link to="/" style={{ textDecoration: 'none' }}>
+            <Navbar.Brand>
             2022 World Cup
-          </Navbar.Brand>
-          <Navbar.Brand className='navbar-left'>
+            </Navbar.Brand>
+          </Link>
+          <Link to="/game" style={{ textDecoration: 'none' }}>
+            <Navbar.Brand className='navbar-left'>
             Game
-          </Navbar.Brand>
+            </Navbar.Brand>
+          </Link>
         </Container>
       </Navbar>
-      <Worldcup></Worldcup>
+
+      <Routes>
+        <Route path="/" element={ <Worldcup></Worldcup> }/>
+        <Route path="/game" element={ <Game></Game> }/>
+      </Routes>
     </div>
   );
 }

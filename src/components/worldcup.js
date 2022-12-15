@@ -9,7 +9,7 @@ function Worldcup () {
         <>
         <div className='flags'>
         {
-            state.countries.map((country)=>{
+            state.countriesFixed.map((country)=>{
                 return <Flag country={country}></Flag>
             })
         }
