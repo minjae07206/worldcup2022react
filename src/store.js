@@ -48,65 +48,197 @@ let countries = createSlice({
             let groupResult = [];
             function sortOneGroup(group, random) {
                 let oneGroupResult = []
+                group = [...group];
                 let idx;
                 let matchRule;
+                console.log(random)
                 switch (random) {
                     case 0:
                         matchRule = Array.from(group, country => country.name);
                         matchRule.sort();
-                        matchRule = matchRule.reverse();
-                        for (let country of group) {
-                            for (let value of matchRule) {
+                        for (let value of matchRule) {
+                            for (let country of group) {
                                 if (country.name === value) {
-                                    oneGroupResult.push(country)
+                                    oneGroupResult.push({...country})
+                                    group.splice(group.indexOf(country), 1)
+                                    break;
                                 }
                             }
                         }
-                        idx = 0;
-                        while (idx < matchRule.length) {
-                            if (matchRule.indexOf(matchRule[idx]) !== matchRule.lastIndexOf(matchRule[idx])) {
-                                let diff = matchRule.lastIndexOf(matchRule[idx]) - matchRule.indexOf(matchRule[idx]);
-                                let random = Math.floor(Math.random() * 6);
-                                let before = oneGroupResult.slice(0, idx);
-                                let after = oneGroupResult.slice(idx + diff + 1, matchRule.length);
-                                idx += (diff + 1);
-                                return before.concat(sortOneGroup(oneGroupResult.slice(idx - (diff + 1), idx), random), after);
-                            }
+                        for (let country of oneGroupResult){
+                            country.current = [country.current, country.name].join("➜")
                         }
                         break;
                     case 1:
                         matchRule = Array.from(group, country => country.group);
                         matchRule.sort();
-                        matchRule = matchRule.reverse();
-                        for (let country of group) {
-                            for (let value of matchRule) {
-                                if (country.name === value) {
-                                    oneGroupResult.push(country)
+                        for (let value of matchRule) {
+                            for (let country of group) {
+                                if (country.group === value) {
+                                    oneGroupResult.push({...country})
+                                    group.splice(group.indexOf(country), 1)
+                                    break;
                                 }
                             }
                         }
-                        idx = 0;
-                        while (idx < matchRule.length) {
-                            if (matchRule.indexOf(matchRule[idx]) !== matchRule.lastIndexOf(matchRule[idx])) {
-                                let diff = matchRule.lastIndexOf(matchRule[idx]) - matchRule.indexOf(matchRule[idx]);
-                                let random = Math.floor(Math.random() * 6);
-                                let before = oneGroupResult.slice(0, idx);
-                                let after = oneGroupResult.slice(idx + diff + 1, matchRule.length);
-                                idx += (diff + 1);
-                                return before.concat(sortOneGroup(oneGroupResult.slice(idx - (diff + 1), idx), random), after);
-                            }
+                        for (let country of oneGroupResult){
+                            country.current = [country.current, country.group].join("➜")
                         }
                         break;
                     case 2:
+                        matchRule = Array.from(group, country => country.appearances);
+                        function compareNumbers(a, b) {
+                            return a - b;
+                          }
+                        matchRule.sort(compareNumbers);
+                        matchRule = matchRule.reverse();
+                        for (let value of matchRule) {
+                            for (let country of group) {
+                                if (country.appearances === value) {
+                                    oneGroupResult.push({...country})
+                                    group.splice(group.indexOf(country), 1)
+                                    break;
+                                }
+                            }
+                        }
+                        for (let country of oneGroupResult){
+                            country.current = [country.current, "Appearances: " + country.appearances].join("➜")
+                        }
                         break;
                     case 3:
+                        matchRule = Array.from(group, country => country.bestPerformance);
+                        matchRule = matchRule.map((value)=>{
+                            switch (value) {
+                                case "Qualifiers":
+                                    return 'A';
+                                case "Group stage":
+                                    return 'B';
+                                case "Round of 16":
+                                    return 'C'
+                                case "Quarter-finals":
+                                    return 'D'
+                                case "Third":
+                                    return 'H'
+                                default:
+                                    return value
+
+                            }
+                        })
+                        matchRule.sort();
+                        matchRule = matchRule.reverse();
+                        matchRule = matchRule.map((value)=>{
+                            switch (value) {
+                                case "A":
+                                    return 'Qualifiers';
+                                case "B":
+                                    return 'Group stage';
+                                case "C":
+                                    return 'Round of 16'
+                                case "D":
+                                    return 'Quarter-finals'
+                                case "H":
+                                    return 'Third'
+                                default:
+                                    return value
+
+                            }
+                        })
+                        for (let value of matchRule) {
+                            for (let country of group) {
+                                if (country.bestPerformance === value) {
+                                    oneGroupResult.push({...country})
+                                    group.splice(group.indexOf(country), 1)
+                                    break;
+                                }
+                            }
+                        }
+                        for (let country of oneGroupResult){
+                            country.current = [country.current, "Best Performance: " + country.bestPerformance].join("➜")
+                        }
                         break;
                     case 4:
+                        matchRule = Array.from(group, country => country.lastPerformance);
+                        matchRule = matchRule.map((value)=>{
+                            switch (value) {
+                                case "Qualifiers":
+                                    return 'A';
+                                case "Group stage":
+                                    return 'B';
+                                case "Round of 16":
+                                    return 'C'
+                                case "Quarter-finals":
+                                    return 'D'
+                                case "Third":
+                                    return 'H'
+                                default:
+                                    return value
+
+                            }
+                        })
+                        matchRule.sort();
+                        matchRule = matchRule.reverse();
+                        matchRule = matchRule.map((value)=>{
+                            switch (value) {
+                                case "A":
+                                    return 'Qualifiers';
+                                case "B":
+                                    return 'Group stage';
+                                case "C":
+                                    return 'Round of 16'
+                                case "D":
+                                    return 'Quarter-finals'
+                                case "H":
+                                    return 'Third'
+                                default:
+                                    return value
+
+                            }
+                        })
+                        for (let value of matchRule) {
+                            for (let country of group) {
+                                if (country.lastPerformance === value) {
+                                    oneGroupResult.push({...country})
+                                    group.splice(group.indexOf(country), 1)
+                                    break;
+                                }
+                            }
+                        }
+                        for (let country of oneGroupResult){
+                            country.current = [country.current, "Last Performance: " + country.lastPerformance].join("➜")
+                        }
                         break;
                     case 5:
+                        matchRule = Array.from(group, country => country.keyPlayer);
+                        matchRule.sort();
+                        for (let value of matchRule) {
+                            for (let country of group) {
+                                if (country.keyPlayer === value) {
+                                    oneGroupResult.push({...country})
+                                    group.splice(group.indexOf(country), 1)
+                                    break;
+                                }
+                            }
+                        }
+                        for (let country of oneGroupResult){
+                            country.current = [country.current, "Key Player: " + country.keyPlayer].join("➜")
+                        }
                         break;
 
                 }
+                /*idx = 0;
+                while (idx <= matchRule.length) {
+                    if (matchRule.indexOf(matchRule[idx]) !== matchRule.lastIndexOf(matchRule[idx])) {
+                        let diff = matchRule.lastIndexOf(matchRule[idx]) - matchRule.indexOf(matchRule[idx]);
+                        let random = Math.floor(Math.random() * 6);
+                        let before = oneGroupResult.slice(0, idx);
+                        let after = oneGroupResult.slice(idx + diff + 1, matchRule.length);
+                        oneGroupResult = before.concat(sortOneGroup(oneGroupResult.slice(idx, idx + diff + 1), random), after);
+                        idx += (diff + 1);
+                    } else {
+                        idx += 1;
+                    } 
+                } */
+                return oneGroupResult;
             }
 
             for (let group of state) {

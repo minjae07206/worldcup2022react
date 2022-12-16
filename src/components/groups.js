@@ -5,50 +5,44 @@ function Groups() {
     let state = useSelector((state) => state);
     let dispatch = useDispatch();
     const groupName = ["A", "B", "C", "D", "E", "F", "G", "H"];
-    if (state.continueButton === 1) {
-        dispatch(sortGroup());
-    }
     return (
-        <div>
+        <div className='group-standings'>
         {
             state.countries.map((group, index) => {
                 return (
+                    <div className='group-table'>
                     <Table striped bordered hover size="sm">
                         <thead>
                             <tr>
                                 <th>{groupName[index]}</th>
                                 <th>Country</th>
                                 <th>Output</th>
-                                <th>Output if tied</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
                                 <td>1</td>
                                 <td>{group[0].name}</td>
-                                <td>Otto</td>
-                                <td>@mdo</td>
+                                <td>{group[0].current}</td>
                             </tr>
                             <tr>
                                 <td>2</td>
                                 <td>{group[1].name}</td>
-                                <td>Thornton</td>
-                                <td>@fat</td>
+                                <td>{group[1].current}</td>
                             </tr>
                             <tr>
                                 <td>3</td>
                                 <td>{group[2].name}</td>
-                                <td>@twitter</td>
-                                <td>sdsd</td>
+                                <td>{group[2].current}</td>
                             </tr>
                             <tr>
                                 <td>4</td>
                                 <td>{group[3].name}</td>
-                                <td>@twitter</td>
-                                <td>sdsd</td>
+                                <td>{group[3].current}</td>
                             </tr>
                         </tbody>
                     </Table>
+                    </div>
                 )
             })
         }
