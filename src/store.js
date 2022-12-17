@@ -51,7 +51,6 @@ let countries = createSlice({
                 group = [...group];
                 let idx;
                 let matchRule;
-                console.log(random)
                 switch (random) {
                     case 0:
                         matchRule = Array.from(group, country => country.name);
@@ -59,13 +58,13 @@ let countries = createSlice({
                         for (let value of matchRule) {
                             for (let country of group) {
                                 if (country.name === value) {
-                                    oneGroupResult.push({...country})
+                                    oneGroupResult.push({ ...country })
                                     group.splice(group.indexOf(country), 1)
                                     break;
                                 }
                             }
                         }
-                        for (let country of oneGroupResult){
+                        for (let country of oneGroupResult) {
                             country.current = [country.current, country.name].join("➜")
                         }
                         break;
@@ -75,13 +74,13 @@ let countries = createSlice({
                         for (let value of matchRule) {
                             for (let country of group) {
                                 if (country.group === value) {
-                                    oneGroupResult.push({...country})
+                                    oneGroupResult.push({ ...country })
                                     group.splice(group.indexOf(country), 1)
                                     break;
                                 }
                             }
                         }
-                        for (let country of oneGroupResult){
+                        for (let country of oneGroupResult) {
                             country.current = [country.current, country.group].join("➜")
                         }
                         break;
@@ -89,25 +88,25 @@ let countries = createSlice({
                         matchRule = Array.from(group, country => country.appearances);
                         function compareNumbers(a, b) {
                             return a - b;
-                          }
+                        }
                         matchRule.sort(compareNumbers);
                         matchRule = matchRule.reverse();
                         for (let value of matchRule) {
                             for (let country of group) {
                                 if (country.appearances === value) {
-                                    oneGroupResult.push({...country})
+                                    oneGroupResult.push({ ...country })
                                     group.splice(group.indexOf(country), 1)
                                     break;
                                 }
                             }
                         }
-                        for (let country of oneGroupResult){
+                        for (let country of oneGroupResult) {
                             country.current = [country.current, "Appearances: " + country.appearances].join("➜")
                         }
                         break;
                     case 3:
                         matchRule = Array.from(group, country => country.bestPerformance);
-                        matchRule = matchRule.map((value)=>{
+                        matchRule = matchRule.map((value) => {
                             switch (value) {
                                 case "Qualifiers":
                                     return 'A';
@@ -126,7 +125,7 @@ let countries = createSlice({
                         })
                         matchRule.sort();
                         matchRule = matchRule.reverse();
-                        matchRule = matchRule.map((value)=>{
+                        matchRule = matchRule.map((value) => {
                             switch (value) {
                                 case "A":
                                     return 'Qualifiers';
@@ -146,19 +145,19 @@ let countries = createSlice({
                         for (let value of matchRule) {
                             for (let country of group) {
                                 if (country.bestPerformance === value) {
-                                    oneGroupResult.push({...country})
+                                    oneGroupResult.push({ ...country })
                                     group.splice(group.indexOf(country), 1)
                                     break;
                                 }
                             }
                         }
-                        for (let country of oneGroupResult){
+                        for (let country of oneGroupResult) {
                             country.current = [country.current, "Best Performance: " + country.bestPerformance].join("➜")
                         }
                         break;
                     case 4:
                         matchRule = Array.from(group, country => country.lastPerformance);
-                        matchRule = matchRule.map((value)=>{
+                        matchRule = matchRule.map((value) => {
                             switch (value) {
                                 case "Qualifiers":
                                     return 'A';
@@ -177,7 +176,7 @@ let countries = createSlice({
                         })
                         matchRule.sort();
                         matchRule = matchRule.reverse();
-                        matchRule = matchRule.map((value)=>{
+                        matchRule = matchRule.map((value) => {
                             switch (value) {
                                 case "A":
                                     return 'Qualifiers';
@@ -197,13 +196,13 @@ let countries = createSlice({
                         for (let value of matchRule) {
                             for (let country of group) {
                                 if (country.lastPerformance === value) {
-                                    oneGroupResult.push({...country})
+                                    oneGroupResult.push({ ...country })
                                     group.splice(group.indexOf(country), 1)
                                     break;
                                 }
                             }
                         }
-                        for (let country of oneGroupResult){
+                        for (let country of oneGroupResult) {
                             country.current = [country.current, "Last Performance: " + country.lastPerformance].join("➜")
                         }
                         break;
@@ -213,19 +212,19 @@ let countries = createSlice({
                         for (let value of matchRule) {
                             for (let country of group) {
                                 if (country.keyPlayer === value) {
-                                    oneGroupResult.push({...country})
+                                    oneGroupResult.push({ ...country })
                                     group.splice(group.indexOf(country), 1)
                                     break;
                                 }
                             }
                         }
-                        for (let country of oneGroupResult){
+                        for (let country of oneGroupResult) {
                             country.current = [country.current, "Key Player: " + country.keyPlayer].join("➜")
                         }
                         break;
 
                 }
-                /*idx = 0;
+                /* idx = 0;
                 while (idx <= matchRule.length) {
                     if (matchRule.indexOf(matchRule[idx]) !== matchRule.lastIndexOf(matchRule[idx])) {
                         let diff = matchRule.lastIndexOf(matchRule[idx]) - matchRule.indexOf(matchRule[idx]);
@@ -237,7 +236,8 @@ let countries = createSlice({
                     } else {
                         idx += 1;
                     } 
-                } */
+                } 
+                */
                 return oneGroupResult;
             }
 
@@ -253,15 +253,48 @@ let countries = createSlice({
 }
 )
 
-let roundOf16 = createSlice({
-    name: 'roundOf16',
-    initialState: [],
+let knockout = createSlice({
+    name: 'knockout',
+    initialState: {
+        roundOf16Countries: Array(16).fill("TBD"),
+        quarterFinalsCountries: Array(8).fill("TBD"),
+        semiFinalsCountries: Array(4).fill("TBD"),
+        finalsCountries: Array(2).fill("TBD"),
+        roundOf16: Array(8).fill(""),
+    },
     reducers: {
-        setRoundOf16(state) {
-
+        setRoundOf16(state, groupResult) {
+            let roundOf16 = [];
+            let left = [];
+            let right = [];
+            let bool = true;
+            for (let group of groupResult.payload) {
+                if (bool) {
+                    left.push(group[0]);
+                    right.push(group[1]);
+                    bool = false;
+                } else {
+                    left.push(group[1]);
+                    right.push(group[0]);
+                    bool = true;
+                }
+            }
+            left = left.concat(right);
+            for (let j=0; j<left.length; j++) {
+                state.roundOf16Countries.splice(j, 1, left[j].name);
+            }
+            for (let i=0; i<left.length; i+=2) {
+                let match = [];
+                match.push(left[i]);
+                match.push(left[i+1]);
+                roundOf16.push(match);
+            }
+            console.log(roundOf16);
+            state.roundOf16 = roundOf16;
         }
     }
 })
+
 let showCountryCard = createSlice({
     name: 'countryCard',
     initialState: false,
@@ -305,9 +338,11 @@ export default configureStore({
         showCountryCard: showCountryCard.reducer,
         currentCountry: currentCountry.reducer,
         continueButton: continueButton.reducer,
+        knockout: knockout.reducer,
     }
 })
 export let { randomGroup, realGroup, sortGroup } = countries.actions;
 export let { setCountryCard } = showCountryCard.actions;
 export let { setCurrentCountry } = currentCountry.actions;
 export let { setContinueButton, resetContinueButton } = continueButton.actions;
+export let { setRoundOf16 } = knockout.actions;

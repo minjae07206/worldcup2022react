@@ -2,7 +2,8 @@ import { Button } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import '../App.css';
 import { Groups } from './groups.js';
-import { randomGroup, realGroup, resetContinueButton, setContinueButton, sortGroup } from '../store.js';
+import { Knockout } from './knockout.js';
+import { randomGroup, realGroup, resetContinueButton, setContinueButton, sortGroup, setRoundOf16} from '../store.js';
 
 function Game() {
   let state = useSelector((state) => state);
@@ -21,13 +22,16 @@ function Game() {
         </Button>
         <Button onClick={() => {
           dispatch(setContinueButton());
-          if (state.continueButton === 1) {
-            dispatch(sortGroup())
+          if (state.continueButton === 0) {
+            dispatch(sortGroup());
+          } else if (state.continueButton === 1) {
+            dispatch(setRoundOf16(state.countries));
           }
         }
         } variant="secondary" size="lg" className='game-button'>Continue</Button>
       </div>
       <Groups></Groups>
+      <Knockout></Knockout>
 
     </>
 

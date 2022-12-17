@@ -1,9 +1,7 @@
 import { Table } from 'react-bootstrap';
-import { useDispatch, useSelector } from 'react-redux';
-import {sortGroup} from '../store.js';
+import {useSelector } from 'react-redux';
 function Groups() {
     let state = useSelector((state) => state);
-    let dispatch = useDispatch();
     const groupName = ["A", "B", "C", "D", "E", "F", "G", "H"];
     return (
         <div className='group-standings'>

@@ -43,6 +43,12 @@
   padding-left: 3px;
   padding-right: 3px;
 }
+.knockout-table {
+  width: 200px;
+  height: 200px;
+  padding-left: 3px;
+  padding-right: 3px;
+}
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
