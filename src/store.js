@@ -275,7 +275,7 @@ let knockout = createSlice({
                     bool = false;
                 } else {
                     left.push(group[1]);
-                    right.push(group[0]);
+                    right.splice(-1, 0, group[0]);
                     bool = true;
                 }
             }
