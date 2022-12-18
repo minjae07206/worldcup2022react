@@ -30,8 +30,8 @@ const countryData = [
     appearances: '3',
     bestPerformance: 'Quarter-finals',
     lastPerformance: 'Group stage',
-    keyPlayer: 'Sadio Mané (FC Bayern Munich)',
-    otherPlayers: ['Kalidou Koulibaly (Chelsea F.C.)', 'Édouard Mendy (Chelsea F.C.)', 'Pape Abou Cissé (Olympiacos F.C.)'],
+    keyPlayer: 'Kalidou Koulibaly (Chelsea F.C.)',
+    otherPlayers: ['Édouard Mendy (Chelsea F.C.)', 'Boulaye Dia (U.S. Salernitana 1919)', 'Idrissa Gueye (Everton F.C.)'],
     continent: 'africa',
     seed: '3',
     current: ""
@@ -43,7 +43,7 @@ const countryData = [
     bestPerformance: 'Runners-up(3)',
     lastPerformance: 'Qualifiers',
     keyPlayer: 'Virgil van Dijk (Liverpool F.C.)',
-    otherPlayers: ['Matthijs de Ligt (FC Bayern Munich)', 'Steven Bergwijn (AFC Ajax)', 'Frenkie de Jong (FC Barcelona)'],
+    otherPlayers: ['Cody Gakpo (PSV Eindhoven)', 'Denzel Dumfries (Inter Milan)', 'Frenkie de Jong (FC Barcelona)'],
     continent: 'europe',
     seed: '2',
     current: ""
@@ -55,8 +55,8 @@ const countryData = [
     appearances: '16',
     bestPerformance: 'Winners(1)',
     lastPerformance: 'Fourth',
-    keyPlayer: 'Phil Foden (Manchester City F.C.)',
-    otherPlayers: ['Harry Kane (Tottenham Hotspur F.C.)', 'Reece James (Chelsea F.C.)', 'Jack Grealish (Manchester City F.C.)'],
+    keyPlayer: 'Harry Kane (Tottenham Hotspur F.C.)',
+    otherPlayers: ['Harry Maguire (Manchester United F.C.)', 'Jude Bellingham (Borussia Dortmund)', 'Bukayo Saka (Arsenal F.C.)'],
     continent: 'europe',
     seed: '1',
     current: ""
@@ -68,7 +68,7 @@ const countryData = [
     bestPerformance: 'Group stage',
     lastPerformance: 'Group stage',
     keyPlayer: 'Mehdi Taremi (FC Porto)',
-    otherPlayers: ['Alireza Jahanbakhsh (Feyenoord)', 'Sardar Azmoun (Bayer 04 Leverkusen)', 'Ali Gholizadeh (R. Charleroi S.C.)'],
+    otherPlayers: ['Ali Gholizadeh (R. Charleroi S.C.)', 'Sardar Azmoun (Bayer 04 Leverkusen)', 'Ehsan Hajsafi (AEK Athens F.C.)'],
     continent: 'asia',
     seed: '3',
     current: ""
@@ -80,7 +80,7 @@ const countryData = [
     bestPerformance: 'Third',
     lastPerformance: 'Qualifiers',
     keyPlayer: 'Christian Pulisic (Chelsea F.C.)',
-    otherPlayers: ['Brenden Aaronson (Leeds United)', 'Weston McKennie (Juventus F.C.)', 'Tyler Adams (Leeds United)'],
+    otherPlayers: ['Antonee Robinson (Fulham F.C.)', 'Weston McKennie (Juventus F.C.)', 'Tyler Adams (Leeds United)'],
     continent: 'northamerica',
     seed: '2',
     current: ""
@@ -91,8 +91,8 @@ const countryData = [
     appearances: '2',
     bestPerformance: 'Quarter-finals',
     lastPerformance: 'Qualifiers',
-    keyPlayer: 'Brennan Johnson (Nottingham Forest F.C.)',
-    otherPlayers: ['Daniel James (Fulham F.C.)', 'Gareth Bale (Los Angeles FC)', 'Neco Williams (Nottingham Forest F.C.)'],
+    keyPlayer: 'Gareth Bale (Los Angeles FC)',
+    otherPlayers: ['Daniel James (Fulham F.C.)', 'Ben Davies (Tottenham Hotspur F.C.)', 'Neco Williams (Nottingham Forest F.C.)'],
     continent: 'europe',
     seed: '4',
     current: ""
@@ -116,7 +116,7 @@ const countryData = [
     bestPerformance: 'Round of 16',
     lastPerformance: 'Group stage',
     keyPlayer: 'Salem Al-Dawsari (Al Hilal SFC)',
-    otherPlayers: ['Sultan Al-Ghanam (Al-Nassr FC)', 'Firas Al-Buraikan (Al Fateh SC)', 'Hattan Bahebri (Al Hilal SFC)'],
+    otherPlayers: ['Saleh Alshehri (Al Hilal SFC)', 'Firas Al-Buraikan (Al Fateh SC)', 'Ali Albulayhi (Al Hilal SFC)'],
     continent: 'asia',
     seed: '4',
     current: ""
@@ -128,7 +128,7 @@ const countryData = [
     bestPerformance: 'Quarter-finals',
     lastPerformance: 'Round of 16',
     keyPlayer: 'Hirving Lozano (S.S.C. Napoli)',
-    otherPlayers: ['Raúl Jiménez (Wolverhampton Wanderers F.C.)', 'Edson Álvarez (AFC Ajax)', 'Andrés Guardado (Real Betis)'],
+    otherPlayers: ['Alexis Vega (C.D. Guadalajara)', 'Edson Álvarez (AFC Ajax)', 'Andrés Guardado (Real Betis Balompié)'],
     continent: 'northamerica',
     seed: '2',
     current: ""
@@ -140,7 +140,7 @@ const countryData = [
     bestPerformance: 'Third',
     lastPerformance: 'Group stage',
     keyPlayer: 'Robert Lewandowski (FC Barcelona)',
-    otherPlayers: ['Piotr Zieliński (S.S.C. Napoli)', 'Jan Bednarek (Aston Villa F.C.)', 'Wojciech Szczęsny (Juventus F.C.)'],
+    otherPlayers: ['Piotr Zieliński (S.S.C. Napoli)', 'Przemysław Frankowski (RC Lens)', 'Wojciech Szczęsny (Juventus F.C.)'],
     continent: 'europe',
     seed: '3',
     current: ""
@@ -152,7 +152,7 @@ const countryData = [
     bestPerformance: 'Winners(2)',
     lastPerformance: 'Winners',
     keyPlayer: 'Kylian Mbappé (Paris Saint-Germain F.C.)',
-    otherPlayers: ['Antoine Griezmann (Atlético Madrid)', 'Ferland Mendy (Real Madrid CF)', 'Benjamin Pavard (FC Bayern Munich)'],
+    otherPlayers: ['Antoine Griezmann (Atlético Madrid)', 'Jules Koundé (FC Barcelona)', 'Olivier Giroud (A.C. Milan)'],
     continent: 'europe',
     seed: '1',
     current: ""
