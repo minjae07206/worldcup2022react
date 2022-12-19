@@ -118,7 +118,7 @@ function Knockout() {
                 }
             </div>
             <div className="round-table">
-                <div className='single-table'>
+                <div className='single-table' style={{width: '130px'}}>
                     <Table striped bordered hover size="sm">
                         <thead>
                             <tr>

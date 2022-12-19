@@ -164,7 +164,7 @@ const countryData = [
     bestPerformance: 'Round of 16',
     lastPerformance: 'Group stage',
     keyPlayer: 'Aaron Mooy (Celtic F.C.)',
-    otherPlayers: ['Mathew Ryan (F.C. Copenhagen)', 'Martin Boyle (Hibernian F.C.)', 'Ajdin Hrustic (Hellas Verona F.C.)'],
+    otherPlayers: ['Mathew Ryan (F.C. Copenhagen)', 'Jackson Irvine (FC St. Pauli)', 'Kye Rowles (Heart of Midlothian F.C.)'],
     continent: 'asia',
     seed: '4',
     current: ""
@@ -212,7 +212,7 @@ const countryData = [
     bestPerformance: 'Quarter-finals',
     lastPerformance: 'Group stage',
     keyPlayer: 'Keylor Navas (Paris Saint-Germain F.C.)',
-    otherPlayers: ['Jewison Bennette (Sunderland A.F.C.)', 'Anthony Contreras (C.S. Herediano)', 'Joel Campbell (Club León)'],
+    otherPlayers: ['Yeltsin Tejeda (C.S. Herediano)', 'Anthony Contreras (C.S. Herediano)', 'Joel Campbell (Club León)'],
     continent: 'northamerica',
     seed: '4',
     current: ""
@@ -223,8 +223,8 @@ const countryData = [
     appearances: '20',
     bestPerformance: 'Winners(4)',
     lastPerformance: 'Group stage',
-    keyPlayer: 'Kai Havertz (Chelsea F.C.)',
-    otherPlayers: ['Joshua Kimmich (FC Bayern Munich)', 'İlkay Gündoğan (Manchester City F.C.)', 'Thomas Müller (FC Bayern Munich)'],
+    keyPlayer: 'Thomas Müller (FC Bayern Munich)',
+    otherPlayers: ['Joshua Kimmich (FC Bayern Munich)', 'İlkay Gündoğan (Manchester City F.C.)', 'Antonio Rüdiger (Real Madrid CF)'],
     continent: 'europe',
     seed: '2',
     current: ""
@@ -235,8 +235,8 @@ const countryData = [
     appearances: '7',
     bestPerformance: 'Round of 16',
     lastPerformance: 'Round of 16',
-    keyPlayer: 'Takehiro Tomiyasu (Arsenal F.C.)',
-    otherPlayers: ['Takefusa Kubo (Real Sociedad)', 'Takumi Minamino (AS Monaco FC)', 'Daichi Kamada (Eintracht Frankfurt)'],
+    keyPlayer: 'Daichi Kamada (Eintracht Frankfurt)',
+    otherPlayers: ['Takefusa Kubo (Real Sociedad)', 'Takumi Minamino (AS Monaco FC)', 'Takuma Asano (VfL Bochum 1848)'],
     continent: 'asia',
     seed: '3',
     current: ""
@@ -260,7 +260,7 @@ const countryData = [
     bestPerformance: 'Group stage',
     lastPerformance: 'Qualifiers',
     keyPlayer: 'Alphonso Davies (FC Bayern Munich)',
-    otherPlayers: ['Jonathan David (Lille OSC)', 'Stephen Eustáquio (FC Porto)', 'Cyle Larin (Club Brugge KV)'],
+    otherPlayers: ['Jonathan David (Lille OSC)', 'Stephen Eustáquio (FC Porto)', 'Tajon Buchanan (Club Brugge KV)'],
     continent: 'northamerica',
     seed: '4',
     current: ""
@@ -272,7 +272,7 @@ const countryData = [
     bestPerformance: 'Round of 16',
     lastPerformance: 'Group stage',
     keyPlayer: 'Achraf Hakimi (Paris Saint-Germain F.C.)',
-    otherPlayers: ['Hakim Ziyech (Chelsea F.C.)', 'Noussair Mazraoui (FC Bayern Munich)', 'Yassine Bounou (Sevilla FC)'],
+    otherPlayers: ['Hakim Ziyech (Chelsea F.C.)', 'Sofyan Amrabat (ACF Fiorentina)', 'Yassine Bounou (Sevilla FC)'],
     continent: 'africa',
     seed: '3',
     current: ""
@@ -332,7 +332,7 @@ const countryData = [
     bestPerformance: 'Quarter-finals',
     lastPerformance: 'Qualifiers',
     keyPlayer: 'Karl Toko Ekambi (Olympique Lyonnais)',
-    otherPlayers: ['Vincent Aboubakar (Al Nassr FC)', 'André Onana (Inter Milan)', 'Bryan Mbeumo (Brentford F.C.)'],
+    otherPlayers: ['Vincent Aboubakar (Al Nassr FC)', 'André-Frank Zambo Anguissa (S.S.C. Napoli)', 'Bryan Mbeumo (Brentford F.C.)'],
     continent: 'africa',
     seed: '4',
     current: ""
@@ -344,7 +344,7 @@ const countryData = [
     bestPerformance: 'Third',
     lastPerformance: 'Round of 16',
     keyPlayer: 'Bruno Fernandes (Manchester United F.C.)',
-    otherPlayers: ['João Cancelo (Manchester City F.C.)', 'Bernardo Silva (Manchester City F.C.)', 'Rúben Dias (Manchester City F.C.)'],
+    otherPlayers: ['João Félix (Atlético de Madrid)', 'Bernardo Silva (Manchester City F.C.)', 'Rúben Dias (Manchester City F.C.)'],
     continent: 'europe',
     seed: '1',
     current: ""
@@ -356,7 +356,7 @@ const countryData = [
     bestPerformance: 'Quarter-finals',
     lastPerformance: 'Qualifiers',
     keyPlayer: 'Mohammed Kudus (AFC Ajax)',
-    otherPlayers: ['André Ayew (Al Sadd SC)', 'Iñaki Williams (Athletic Bilbao)', 'Daniel Amartey (Leicester City F.C.)'],
+    otherPlayers: ['Mohammed Salisu (Southampton F.C.)', 'Iñaki Williams (Athletic Bilbao)', 'Daniel Amartey (Leicester City F.C.)'],
     continent: 'africa',
     seed: '4',
     current: ""

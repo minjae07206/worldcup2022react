@@ -3,34 +3,43 @@ import { useDispatch, useSelector } from 'react-redux';
 import '../App.css';
 import { Groups } from './groups.js';
 import { Knockout } from './knockout.js';
-import { randomGroup, realGroup, resetContinueButton, setContinueButton, sortGroup, setRoundOf16, sortKnockout, resetKnockout} from '../store.js';
-
+import { randomGroup, realGroup, resetContinueButton, setContinueButton, sortGroup, setRoundOf16, sortKnockout, resetKnockout } from '../store.js';
+// if tied use one of the three other players, randomly.
 function Game() {
   let state = useSelector((state) => state);
   let dispatch = useDispatch();
   return (
     <>
       <div className='game-buttons'>
-        <Button onClick={() => { dispatch(realGroup()); dispatch(resetContinueButton()); dispatch(resetKnockout())}} variant="secondary" size="lg" className='game-button'>
+        <Button onClick={() => { dispatch(realGroup()); dispatch(resetContinueButton()); dispatch(resetKnockout()) }} variant="secondary" size="lg" className='game-button'>
           2022 World cup Groups
         </Button>
         <Button variant="secondary" size="lg" className='game-button'>
           Large button
         </Button>
-        <Button onClick={() => { dispatch(randomGroup()); dispatch(resetContinueButton()); dispatch(resetKnockout())}} variant="secondary" size="lg" className='game-button'>
+        <Button onClick={() => { dispatch(randomGroup()); dispatch(resetContinueButton()); dispatch(resetKnockout()) }} variant="secondary" size="lg" className='game-button'>
           Random Groups
         </Button>
-        <Button onClick={() => {
-          dispatch(setContinueButton());
-          if (state.continueButton === 0) {
-            dispatch(sortGroup());
-          } else if (state.continueButton === 1) {
-            dispatch(setRoundOf16(state.countries));
-          } else if (state.continueButton >= 2) {
-            dispatch(sortKnockout());
-          }
+        {
+          state.continueButton === 6 ?
+            <Button onClick={() => {
+              dispatch((resetContinueButton())); dispatch(resetKnockout()); dispatch(realGroup());
+            }} variant="secondary" size="lg" className='game-button'>
+              Reset
+            </Button>
+            : <Button onClick={() => {
+              dispatch(setContinueButton());
+              if (state.continueButton === 0) {
+                dispatch(sortGroup());
+              } else if (state.continueButton === 1) {
+                dispatch(setRoundOf16(state.countries));
+              } else if (state.continueButton >= 2 && state.continueButton <= 5) {
+                dispatch(sortKnockout());
+              }
+            }
+            } variant="secondary" size="lg" className='game-button'>Continue</Button>
         }
-        } variant="secondary" size="lg" className='game-button'>Continue</Button>
+
       </div>
       <Groups></Groups>
       <Knockout></Knockout>

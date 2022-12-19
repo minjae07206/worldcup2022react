@@ -65,7 +65,7 @@ let countries = createSlice({
                             }
                         }
                         for (let country of oneGroupResult) {
-                            country.current = [country.current, country.name].join("➜")
+                            country.current = country.name
                         }
                         break;
                     case 1:
@@ -81,7 +81,7 @@ let countries = createSlice({
                             }
                         }
                         for (let country of oneGroupResult) {
-                            country.current = [country.current, country.group].join("➜")
+                            country.current = country.group
                         }
                         break;
                     case 2:
@@ -101,7 +101,7 @@ let countries = createSlice({
                             }
                         }
                         for (let country of oneGroupResult) {
-                            country.current = [country.current, "Appearances: " + country.appearances].join("➜")
+                            country.current = "Appearances: " + country.appearances
                         }
                         break;
                     case 3:
@@ -152,7 +152,7 @@ let countries = createSlice({
                             }
                         }
                         for (let country of oneGroupResult) {
-                            country.current = [country.current, "Best Performance: " + country.bestPerformance].join("➜")
+                            country.current = "Best Performance: " + country.bestPerformance
                         }
                         break;
                     case 4:
@@ -203,7 +203,7 @@ let countries = createSlice({
                             }
                         }
                         for (let country of oneGroupResult) {
-                            country.current = [country.current, "Last Performance: " + country.lastPerformance].join("➜")
+                            country.current = "Last Performance: " + country.lastPerformance
                         }
                         break;
                     case 5:
@@ -219,25 +219,45 @@ let countries = createSlice({
                             }
                         }
                         for (let country of oneGroupResult) {
-                            country.current = [country.current, "Key Player: " + country.keyPlayer].join("➜")
+                            country.current = "Key Player: " + country.keyPlayer
+                        }
+                        break;
+                    default:
+                        matchRule = [];
+                        for (let country of group) {
+                            let random = Math.floor(Math.random() * 3);
+                            console.log(random);
+                            matchRule.push(country.otherPlayers[random])
+                        }
+                        matchRule.sort();
+                        for (let value of matchRule) {
+                            for (let country of group) {
+                                if (country.otherPlayers.includes(value)) {
+                                    oneGroupResult.push({ ...country })
+                                    group.splice(group.indexOf(country), 1)
+                                    break;
+                                }
+                            }
+                        }
+                        for (let i=0; i<matchRule.length; i++) {
+                            oneGroupResult[i].current = oneGroupResult[i].current + "➜ Player: " + matchRule[i];
                         }
                         break;
 
                 }
-                /* idx = 0;
+                 idx = 0;
                 while (idx <= matchRule.length) {
                     if (matchRule.indexOf(matchRule[idx]) !== matchRule.lastIndexOf(matchRule[idx])) {
                         let diff = matchRule.lastIndexOf(matchRule[idx]) - matchRule.indexOf(matchRule[idx]);
-                        let random = Math.floor(Math.random() * 6);
                         let before = oneGroupResult.slice(0, idx);
                         let after = oneGroupResult.slice(idx + diff + 1, matchRule.length);
-                        oneGroupResult = before.concat(sortOneGroup(oneGroupResult.slice(idx, idx + diff + 1), random), after);
+                        oneGroupResult = before.concat(sortOneGroup(oneGroupResult.slice(idx, idx + diff + 1), 6), after);
                         idx += (diff + 1);
                     } else {
                         idx += 1;
                     } 
                 } 
-                */
+                
                 return oneGroupResult;
             }
 
@@ -297,6 +317,17 @@ let knockout = createSlice({
             state.knockoutRound = knockoutRound;
         },
         sortKnockout(state) {
+            function ifTied (firstCountry, secondCountry) {
+                let random1 = Math.floor(Math.random() * 3);
+                let random2 = Math.floor(Math.random() * 3);
+                let firstResult = firstCountry.otherPlayers[random1];
+                let secondResult = secondCountry.otherPlayers[random2];
+                if (firstResult > secondResult) {
+                    return [secondCountry, firstResult, secondResult]
+                } else {
+                    return [firstCountry, firstResult, secondResult]
+                }
+            }
             let nextRoundFinal = [];
             let nextRound = [];
             let nextRoundCountryName = [];
@@ -317,7 +348,13 @@ let knockout = createSlice({
                         }
                         break;
                     case 1:
-                        if (match[0].group < match[1].group) {
+                        if (match[0].group === match[1].group) {
+                            let resultList = ifTied(match[0], match[1]);
+                            let result1 = match[0].group + '➜' + resultList[1];
+                            let result2 = match[1].group + '➜' + resultList[2];
+                            nextRound.push(resultList[0]);
+                            thisRoundResults.push(result1, result2);
+                        } else if (match[0].group < match[1].group) {
                             nextRound.push(match[0]);
                             thisRoundResults.push(match[0].group);
                             thisRoundResults.push(match[1].group);
@@ -328,7 +365,15 @@ let knockout = createSlice({
                         }
                         break;
                     case 2:
-                        if (match[0].appearances > match[1].appearances) {
+                        let appearances1 = parseInt(match[0].appearances, 10);
+                        let appearances2 = parseInt(match[1].appearances, 10)
+                        if (appearances1 === appearances2) {
+                            let resultList = ifTied(match[0], match[1]);
+                            let result1 = appearances1 + '➜' + resultList[1];
+                            let result2 = appearances2 + '➜' + resultList[2];
+                            nextRound.push(resultList[0]);
+                            thisRoundResults.push(result1, result2);
+                        } else if (appearances1 > appearances2) {
                             nextRound.push(match[0]);
                             thisRoundResults.push(match[0].appearances);
                             thisRoundResults.push(match[1].appearances);
@@ -356,7 +401,13 @@ let knockout = createSlice({
                                     return value;
                             }
                         })
-                        if (match[0].bestPerformance > match[1].bestPerformance) {
+                        if (matchRule[0] === matchRule[1]) {
+                            let resultList = ifTied(match[0], match[1]);
+                            let result1 = match[0].bestPerformance + '➜' + resultList[1];
+                            let result2 = match[1].bestPerformance + '➜' + resultList[2];
+                            nextRound.push(resultList[0]);
+                            thisRoundResults.push(result1, result2);
+                        } else if (matchRule[0] > matchRule[1]) {
                             nextRound.push(match[0]);
                             thisRoundResults.push(match[0].bestPerformance);
                             thisRoundResults.push(match[1].bestPerformance);
@@ -382,10 +433,15 @@ let knockout = createSlice({
                                     return 'H'
                                 default:
                                     return value
-
                             }
                         })
-                        if (match[0].lastPerformance > match[1].lastPerformance) {
+                        if (matchRule[0] === matchRule[1]) {
+                            let resultList = ifTied(match[0], match[1]);
+                            let result1 = match[0].lastPerformance + '➜' + resultList[1];
+                            let result2 = match[1].lastPerformance + '➜' + resultList[2];
+                            nextRound.push(resultList[0]);
+                            thisRoundResults.push(result1, result2);
+                        } else if (matchRule[0] > matchRule[1]) {
                             nextRound.push(match[0]);
                             thisRoundResults.push(match[0].lastPerformance);
                             thisRoundResults.push(match[1].lastPerformance);
