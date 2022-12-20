@@ -6,7 +6,12 @@ import {Game} from './components/game.js';
 import { Routes, Route, Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import {realGroup} from './store.js';
-
+// make possible group function
+// change color to purple?
+// add flag?
+// change winners to Bold?
+// 역대 우승자, 준우승자 개시
+// first, put all the first seeds randomly into groups. then put second seeds into groups, then third, then four
 function App() {
   let dispatch = useDispatch();
   let state = useSelector((state)=>state);

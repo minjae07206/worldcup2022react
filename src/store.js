@@ -27,7 +27,58 @@ let countries = createSlice({
             return realGroupStage;
         },
         possibleGroup() {
-            return null;
+            const copiedData = [...countryData];
+            let possibleGroupStage = [[], [], [], [], [], [], [], []]
+            let seeds = [[], [], [], []];
+            let seedo = [[], [], [], []];
+            for (let country of copiedData) {
+                seeds[country.seed - 1].push(country);
+            }
+            console.log(seeds)
+            for (let seed of seeds) {
+                let groupLength = 0;
+                for (let i = 0; i < 8; i++) {
+                    /*if (seed[i].name === 'Qatar') {
+                        possibleGroupStage[0].push(seed[i])
+                        seed.splice(i, 1)
+                        
+                    } else { */
+                        let random = Math.floor(Math.random() * seed.length);
+                        let popped = seed.splice(random, 1);
+                        popped = popped[0];
+                        for (let group of possibleGroupStage) {
+                            let europeCount = 0;
+                            let same = false;
+                            if (group.length === 0) {
+                                group.push(popped);
+                                break;
+                            } else if (group.length >= groupLength) {
+                                continue;
+                            } else {
+                                for (let country of group) {
+                                    if (country.continent === popped.continent) {
+                                        if (popped.continent === 'europe') {
+                                            europeCount += 1;
+                                        } else {
+                                            same = true;
+                                        }
+                                    }
+                                }
+                                if (europeCount > 1) {
+                                    same = true;
+                                }
+                                if (same === false) {
+                                    group.push(popped);
+                                    break;
+                                }
+                            }
+                        }
+                  //  }
+                }
+                groupLength++;
+            }
+            console.log(possibleGroupStage);
+            return realGroupStage;
         },
         randomGroup(state) {
             const copiedData = [...countryData];
@@ -239,13 +290,13 @@ let countries = createSlice({
                                 }
                             }
                         }
-                        for (let i=0; i<matchRule.length; i++) {
+                        for (let i = 0; i < matchRule.length; i++) {
                             oneGroupResult[i].current = oneGroupResult[i].current + "➜ Player: " + matchRule[i];
                         }
                         break;
 
                 }
-                 idx = 0;
+                idx = 0;
                 while (idx <= matchRule.length) {
                     if (matchRule.indexOf(matchRule[idx]) !== matchRule.lastIndexOf(matchRule[idx])) {
                         let diff = matchRule.lastIndexOf(matchRule[idx]) - matchRule.indexOf(matchRule[idx]);
@@ -255,9 +306,9 @@ let countries = createSlice({
                         idx += (diff + 1);
                     } else {
                         idx += 1;
-                    } 
-                } 
-                
+                    }
+                }
+
                 return oneGroupResult;
             }
 
@@ -317,7 +368,7 @@ let knockout = createSlice({
             state.knockoutRound = knockoutRound;
         },
         sortKnockout(state) {
-            function ifTied (firstCountry, secondCountry) {
+            function ifTied(firstCountry, secondCountry) {
                 let random1 = Math.floor(Math.random() * 3);
                 let random2 = Math.floor(Math.random() * 3);
                 let firstResult = firstCountry.otherPlayers[random1];
@@ -414,7 +465,7 @@ let knockout = createSlice({
                         } else {
                             nextRound.push(match[1]);
                             thisRoundResults.push(match[0].bestPerformance);
-                            thisRoundResults.push(match[1].bestPerformance); 
+                            thisRoundResults.push(match[1].bestPerformance);
                         }
                         break;
                     case 4:
@@ -556,7 +607,7 @@ export default configureStore({
         knockout: knockout.reducer,
     }
 })
-export let { randomGroup, realGroup, sortGroup } = countries.actions;
+export let { randomGroup, realGroup, sortGroup, possibleGroup } = countries.actions;
 export let { setCountryCard } = showCountryCard.actions;
 export let { setCurrentCountry } = currentCountry.actions;
 export let { setContinueButton, resetContinueButton } = continueButton.actions;
