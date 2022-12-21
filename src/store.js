@@ -27,58 +27,69 @@ let countries = createSlice({
             return realGroupStage;
         },
         possibleGroup() {
-            const copiedData = [...countryData];
-            let possibleGroupStage = [[], [], [], [], [], [], [], []]
-            let seeds = [[], [], [], []];
-            let seedo = [[], [], [], []];
-            for (let country of copiedData) {
-                seeds[country.seed - 1].push(country);
-            }
-            console.log(seeds)
-            for (let seed of seeds) {
+            function possibleGroupIn() {
+                const copiedData = [...countryData];
+                const possibleGroupStage = [[], [], [], [], [], [], [], []]
+                let seeds = [[], [], [], []];
+                let seedo = [[], [], [], []];
                 let groupLength = 0;
-                for (let i = 0; i < 8; i++) {
-                    /*if (seed[i].name === 'Qatar') {
-                        possibleGroupStage[0].push(seed[i])
-                        seed.splice(i, 1)
-                        
-                    } else { */
-                        let random = Math.floor(Math.random() * seed.length);
-                        let popped = seed.splice(random, 1);
-                        popped = popped[0];
-                        for (let group of possibleGroupStage) {
-                            let europeCount = 0;
-                            let same = false;
-                            if (group.length === 0) {
-                                group.push(popped);
-                                break;
-                            } else if (group.length >= groupLength) {
-                                continue;
-                            } else {
-                                for (let country of group) {
-                                    if (country.continent === popped.continent) {
-                                        if (popped.continent === 'europe') {
-                                            europeCount += 1;
-                                        } else {
-                                            same = true;
-                                        }
-                                    }
-                                }
-                                if (europeCount > 1) {
-                                    same = true;
-                                }
-                                if (same === false) {
+                for (let country of copiedData) {
+                    seeds[country.seed - 1].push(country);
+                }
+                for (let seed of seeds) {
+                    for (let i = 0; i < 8; i++) {
+                        if (i === 0 && seed[i].name === 'Qatar') {
+                            possibleGroupStage[0].push(seed[i])
+                            seed.splice(i, 1);
+                        } else {
+                            let random = Math.floor(Math.random() * seed.length);
+                            let popped = seed.splice(random, 1);
+                            popped = popped[0];
+                            for (let group of possibleGroupStage) {
+                                let europeCount = 0;
+                                let same = false;
+                                if (group.length === 0) {
                                     group.push(popped);
                                     break;
+                                } else if (group.length > groupLength) {
+                                    continue;
+                                } else {
+                                    for (let country of group) {
+                                        if (country.continent === popped.continent) {
+                                            if (popped.continent === 'europe') {
+                                                europeCount += 1;
+                                            } else {
+                                                same = true;
+                                            }
+                                        }
+                                    }
+                                    if (europeCount > 1) {
+                                        same = true;
+                                    }
+                                    if (same === false) {
+                                        group.push(popped);
+                                        break;
+                                    }
                                 }
                             }
                         }
-                  //  }
+                    }
+                    groupLength += 1;
                 }
-                groupLength++;
+                let thisWorks = true;
+                for (let group of possibleGroupStage) {
+                    if (group.length < 4) {
+                        thisWorks = false
+                    }
+                }
+                if (thisWorks) {
+                    return possibleGroupStage;
+                } else {
+                    return possibleGroupIn();
+                }
             }
-            console.log(possibleGroupStage);
-            return realGroupStage;
+            const result = possibleGroupIn();
+            return result;
         },
         randomGroup(state) {
             const copiedData = [...countryData];
@@ -277,7 +288,6 @@ let countries = createSlice({
                         matchRule = [];
                         for (let country of group) {
                             let random = Math.floor(Math.random() * 3);
-                            console.log(random);
                             matchRule.push(country.otherPlayers[random])
                         }
                         matchRule.sort();
