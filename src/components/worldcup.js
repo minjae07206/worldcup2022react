@@ -7,7 +7,7 @@ function Worldcup () {
     let dispatch = useDispatch();
     return (
         <>
-        <div className='flags'>
+        <div className='flags qatar'>
         {
             state.countriesFixed.map((country)=>{
                 return <Flag country={country}></Flag>

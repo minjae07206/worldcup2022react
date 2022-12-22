@@ -9,15 +9,15 @@ function Game() {
   let state = useSelector((state) => state);
   let dispatch = useDispatch();
   return (
-    <>
+    <div className='qatar'>
       <div className='game-buttons'>
-        <Button onClick={() => { dispatch(realGroup()); dispatch(resetContinueButton()); dispatch(resetKnockout()) }} variant="secondary" size="lg" className='game-button'>
+        <Button onClick={() => { dispatch(realGroup()); dispatch(resetContinueButton()); dispatch(resetKnockout()) }} variant="light" size="lg" className='game-button'>
           2022 World cup Groups
         </Button>
-        <Button onClick={() => { dispatch(possibleGroup()); dispatch(resetContinueButton()); dispatch(resetKnockout()) }} variant="secondary" size="lg" className='game-button'>
+        <Button onClick={() => { dispatch(possibleGroup()); dispatch(resetContinueButton()); dispatch(resetKnockout()) }} variant="light" size="lg" className='game-button'>
           Possible Groups
         </Button>
-        <Button onClick={() => { dispatch(randomGroup()); dispatch(resetContinueButton()); dispatch(resetKnockout()) }} variant="secondary" size="lg" className='game-button'>
+        <Button onClick={() => { dispatch(randomGroup()); dispatch(resetContinueButton()); dispatch(resetKnockout()) }} variant="light" size="lg" className='game-button'>
           Random Groups
         </Button>
         {
@@ -44,7 +44,7 @@ function Game() {
       <Groups></Groups>
       <Knockout></Knockout>
 
-    </>
+    </div>
 
 
   )

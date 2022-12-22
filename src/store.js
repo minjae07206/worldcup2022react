@@ -31,7 +31,6 @@ let countries = createSlice({
                 const copiedData = [...countryData];
                 const possibleGroupStage = [[], [], [], [], [], [], [], []]
                 let seeds = [[], [], [], []];
-                let seedo = [[], [], [], []];
                 let groupLength = 0;
                 for (let country of copiedData) {
                     seeds[country.seed - 1].push(country);
@@ -347,10 +346,16 @@ let knockout = createSlice({
         quarterFinalsResults: Array(8).fill("-"),
         semiFinalsResults: Array(4).fill("-"),
         finalsResults: Array(2).fill("-"),
+        roundOf16Flags: Array(16).fill(""),
+        quarterFinalsFlags: Array(8).fill(""),
+        semiFinalsFlags: Array(4).fill(""),
+        finalsFlags: Array(2).fill(""),
+        winnerFlag: ""
     },
     reducers: {
         setRoundOf16(state, groupResult) {
             let knockoutRound = [];
+            let flags = [];
             let left = [];
             let right = [];
             let bool = true;
@@ -368,6 +373,7 @@ let knockout = createSlice({
             left = left.concat(right);
             for (let j = 0; j < left.length; j++) {
                 state.roundOf16Countries.splice(j, 1, left[j].name);
+                flags.splice(j, 1, left[j].image);
             }
             for (let i = 0; i < left.length; i += 2) {
                 let match = [];
@@ -376,6 +382,7 @@ let knockout = createSlice({
                 knockoutRound.push(match);
             }
             state.knockoutRound = knockoutRound;
+            state.roundOf16Flags = flags;
         },
         sortKnockout(state) {
             function ifTied(firstCountry, secondCountry) {
@@ -393,6 +400,7 @@ let knockout = createSlice({
             let nextRound = [];
             let nextRoundCountryName = [];
             let thisRoundResults = [];
+            let flags = [];
             for (let match of state.knockoutRound) {
                 let random = Math.floor(Math.random() * 6);
                 let matchRule;
@@ -527,23 +535,28 @@ let knockout = createSlice({
             }
             for (let country of nextRound) {
                 nextRoundCountryName.push(country.name);
+                flags.push(country.image);
             }
             switch (nextRound.length) {
                 case 8:
                     state.quarterFinalsCountries = nextRoundCountryName;
                     state.roundOf16Results = thisRoundResults;
+                    state.quarterFinalsFlags = flags;
                     break;
                 case 4:
                     state.semiFinalsCountries = nextRoundCountryName;
                     state.quarterFinalsResults = thisRoundResults;
+                    state.semiFinalsFlags = flags;
                     break;
                 case 2:
                     state.finalsCountries = nextRoundCountryName;
                     state.semiFinalsResults = thisRoundResults;
+                    state.finalsFlags = flags;
                     break;
                 case 1:
                     state.winnerCountry = nextRoundCountryName;
                     state.finalsResults = thisRoundResults;
+                    state.winnerFlag = flags;
             }
             for (let i = 0; i < nextRound.length; i += 2) {
                 let match = [];
@@ -565,6 +578,11 @@ let knockout = createSlice({
                 quarterFinalsResults: Array(8).fill("-"),
                 semiFinalsResults: Array(4).fill("-"),
                 finalsResults: Array(2).fill("-"),
+                roundOf16Flags: Array(16).fill(""),
+                quarterFinalsFlags: Array(8).fill(""),
+                semiFinalsFlags: Array(4).fill(""),
+                finalsFlags: Array(2).fill(""),
+                winnerFlag: ""
             }
         }
 

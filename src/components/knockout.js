@@ -2,7 +2,7 @@ import { useSelector } from "react-redux";
 import { Table } from 'react-bootstrap';
 function Knockout() {
     let state = useSelector((state) => state);
-    console.log(state.knockout);
+
     return (
         <div className="knockout-table">
             <div>
@@ -19,11 +19,11 @@ function Knockout() {
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <td>{state.knockout.roundOf16Countries[index * 2]}</td>
+                                            <td><img className="imagelogo" src={`${process.env.PUBLIC_URL}/flags/${state.knockout.roundOf16Flags[index*2]}`}></img>{" " + state.knockout.roundOf16Countries[index * 2]}</td>
                                             <td>{state.knockout.roundOf16Results[index * 2]}</td>
                                         </tr>
                                         <tr>
-                                            <td>{state.knockout.roundOf16Countries[index * 2 + 1]}</td>
+                                        <td><img className="imagelogo" src={`${process.env.PUBLIC_URL}/flags/${state.knockout.roundOf16Flags[index*2+1]}`}></img>{" " + state.knockout.roundOf16Countries[index * 2 + 1]}</td>
                                             <td>{state.knockout.roundOf16Results[index * 2 + 1]}</td>
                                         </tr>
                                     </tbody>
@@ -47,11 +47,11 @@ function Knockout() {
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <td>{state.knockout.quarterFinalsCountries[index * 2]}</td>
+                                            <td><img className="imagelogo" src={`${process.env.PUBLIC_URL}/flags/${state.knockout.quarterFinalsFlags[index*2]}`}></img>{" " + state.knockout.quarterFinalsCountries[index * 2]}</td>
                                             <td>{state.knockout.quarterFinalsResults[index * 2]}</td>
                                         </tr>
                                         <tr>
-                                            <td>{state.knockout.quarterFinalsCountries[index * 2 + 1]}</td>
+                                        <td><img className="imagelogo" src={`${process.env.PUBLIC_URL}/flags/${state.knockout.quarterFinalsFlags[index*2+1]}`}></img>{" " + state.knockout.quarterFinalsCountries[index * 2+1]}</td>
                                             <td>{state.knockout.quarterFinalsResults[index * 2 + 1]}</td>
                                         </tr>
                                     </tbody>
@@ -75,11 +75,11 @@ function Knockout() {
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <td>{state.knockout.semiFinalsCountries[index * 2]}</td>
+                                        <td><img className="imagelogo" src={`${process.env.PUBLIC_URL}/flags/${state.knockout.semiFinalsFlags[index*2]}`}></img>{" " + state.knockout.semiFinalsCountries[index * 2]}</td>
                                             <td>{state.knockout.semiFinalsResults[index * 2]}</td>
                                         </tr>
                                         <tr>
-                                            <td>{state.knockout.semiFinalsCountries[index * 2 + 1]}</td>
+                                        <td><img className="imagelogo" src={`${process.env.PUBLIC_URL}/flags/${state.knockout.semiFinalsFlags[index*2+1]}`}></img>{" " + state.knockout.semiFinalsCountries[index * 2+1]}</td>
                                             <td>{state.knockout.semiFinalsResults[index * 2 + 1]}</td>
                                         </tr>
                                     </tbody>
@@ -103,11 +103,11 @@ function Knockout() {
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <td>{state.knockout.finalsCountries[index * 2]}</td>
+                                        <td><img className="imagelogo" src={`${process.env.PUBLIC_URL}/flags/${state.knockout.finalsFlags[index*2]}`}></img>{" " + state.knockout.finalsCountries[index * 2]}</td>
                                             <td>{state.knockout.finalsResults[index * 2]}</td>
                                         </tr>
                                         <tr>
-                                            <td>{state.knockout.finalsCountries[index * 2 + 1]}</td>
+                                        <td><img className="imagelogo" src={`${process.env.PUBLIC_URL}/flags/${state.knockout.finalsFlags[index*2+1]}`}></img>{" " + state.knockout.finalsCountries[index * 2+1]}</td>
                                             <td>{state.knockout.finalsResults[index * 2 + 1]}</td>
                                         </tr>
                                     </tbody>
@@ -127,7 +127,7 @@ function Knockout() {
                         </thead>
                         <tbody>
                             <tr>
-                                <td>{state.knockout.winnerCountry[0]}</td>
+                            <td><img className="imagelogo" src={`${process.env.PUBLIC_URL}/flags/${state.knockout.winnerFlag}`}></img>{" " + state.knockout.winnerCountry[0]}</td>
                             </tr>
                         </tbody>
                     </Table>
